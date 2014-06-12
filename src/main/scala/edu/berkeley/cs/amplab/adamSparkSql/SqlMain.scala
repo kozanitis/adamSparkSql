@@ -25,23 +25,23 @@ object SqlMain{
 
   def main(args: Array[String]){
 
-    val conf = new SparkConf(true)
+    /*val conf = new SparkConf(true)
       .setMaster("local")
-      .setAppName("AdamSparkSql")
+      .setAppName("AdamSparkSql")*/
 
 
-    /*val conf = new SparkConf(true)  ///distributed mode
+    val conf = new SparkConf(true)  ///distributed mode
       .setMaster("spark://ec2-54-242-161-178.compute-1.amazonaws.com:7077")
       .setSparkHome("/root/spark")
-      .setAppName("AdamSparkSql")*/
+      .setAppName("AdamSparkSql")
 
     sqc = new SQLContext(new SparkContext(conf))
 
-    //sqc.parquetFile("hdfs://ec2-54-242-161-178.compute-1.amazonaws.com:9000/genomes/mouse/mouse.adam")
-    sqc.parquetFile("file:///root/genomes/mouse.adam")
+    sqc.parquetFile("hdfs://ec2-54-242-161-178.compute-1.amazonaws.com:9000/genomes/mouse/mouse.adam")
+    //sqc.parquetFile("file:///root/genomes/mouse.adam")
       .registerAsTable("MouseTable")
 
-    sqc.sql("select * from mouseTable limit 56").collect.foreach(println)
+    sqc.sql("select * from MouseTable limit 56").collect.foreach(println)
 
     sqc.sparkContext.stop
 

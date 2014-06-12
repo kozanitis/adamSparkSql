@@ -13,10 +13,26 @@
         <scala.version>2.10.3</scala.version>
         <scala.artifact.suffix>2.10</scala.artifact.suffix>
 		<spark.version>1.0.0</spark.version>
+        <parquet.version>1.4.3</parquet.version>
     </properties>
 
 
     <dependencies>
+        <dependency>
+            <groupId>com.twitter</groupId>
+            <artifactId>parquet-avro</artifactId>
+            <version>${parquet.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>com.twitter</groupId>
+            <artifactId>parquet-jackson</artifactId>
+            <version>${parquet.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>com.twitter</groupId>
+            <artifactId>parquet-hadoop</artifactId>
+            <version>${parquet.version}</version>
+        </dependency>
 		<dependency>
 			<groupId>org.apache.spark</groupId>
 			<artifactId>spark-core_${scala.artifact.suffix}</artifactId>
